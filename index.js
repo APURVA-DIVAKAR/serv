@@ -12,9 +12,9 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.post('/',(req,res)=>{
+app.get('/',(req,res)=>{
   res.send({message: 'Hey its Working'})
-}
+})
 
 // SignUp Route
 app.post('/register',async(req,res)=>{
