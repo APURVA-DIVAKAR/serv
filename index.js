@@ -59,37 +59,37 @@ app.post('/login',async(req,res)=>{
 
 // BmiCalculator
 
-app.post('/calculateBMI',async(req,res)=>{
-    const userId = req.session.user_id
-    res.send(userId)
-    const {ht,wt} = req.body;
-    ht = ht.split("'").map(Number);
-    ht = (ht[0]*12.00000)+ht[1];
-    ht = ht/39.37008
-    let bmi = ht/wt;
-    // let res;
-    // if(bmi<18.5){
-    //    res ="Under Weight" 
-    // }
-    // else if(bmi>=18.5 && bmi<=24.9){
-    //     res ="Normal Weight" 
-    // }
-    // else if(bmi>=25 && bmi<=29.9){
-    //     res ="Over Weight" 
-    // }
-    // else if(bmi>=30 && bmi<=34.9){
-    //     res ="Obesity" 
-    // }
-    // else{
-    //     res ="Extrem Obesity" 
-    // }
+// app.post('/calculateBMI',async(req,res)=>{
+//     const userId = req.session.user_id
+//     res.send(userId)
+//     const {ht,wt} = req.body;
+//     ht = ht.split("'").map(Number);
+//     ht = (ht[0]*12.00000)+ht[1];
+//     ht = ht/39.37008
+//     let bmi = ht/wt;
+//     // let res;
+//     // if(bmi<18.5){
+//     //    res ="Under Weight" 
+//     // }
+//     // else if(bmi>=18.5 && bmi<=24.9){
+//     //     res ="Normal Weight" 
+//     // }
+//     // else if(bmi>=25 && bmi<=29.9){
+//     //     res ="Over Weight" 
+//     // }
+//     // else if(bmi>=30 && bmi<=34.9){
+//     //     res ="Obesity" 
+//     // }
+//     // else{
+//     //     res ="Extrem Obesity" 
+//     // }
 
-    // const bres = new UserModal({Bmi:bmi,Result:res,user:userId})
-    // await bres.save();
-    // res.status(201).send("User Result saved Succesfully!",bres)
+//     // const bres = new UserModal({Bmi:bmi,Result:res,user:userId})
+//     // await bres.save();
+//     // res.status(201).send("User Result saved Succesfully!",bres)
     
 
-})
+// })
 
 mongoose.connect(process.env.MONGO_URL).then(()=>{
     app.listen(8080,()=>{ console.log('listening on 8080')})
