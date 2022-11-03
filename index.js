@@ -14,7 +14,7 @@ app.get("/",(req, res)=>{
 
 // Signup Route
 
-app.post("/signin", async(req,res)=>{
+app.post("/signup", async(req,res)=>{
     const user = await new UserModel(req.body);
     user.save((err,success)=>{
         if(err){
@@ -26,7 +26,7 @@ app.post("/signin", async(req,res)=>{
 
 // Login Router
 
-app.post("/signin", async(req,res)=>{
+app.post("/login", async(req,res)=>{
     // console.log(req.body);
     const checkUser = await UserModel.findOne(req.body).lean();
     if(checkUser){
