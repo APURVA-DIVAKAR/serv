@@ -51,6 +51,6 @@ app.post("/login", async(req,res)=>{
 
 const PORT = process.env.PORT || 8080;
 
-mongoose.connect(process.env.MONGO_URL).then(()=>{
+mongoose.connect("mongodb://127.0.0.1:27017/Users").then(()=>{
     app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
 })
