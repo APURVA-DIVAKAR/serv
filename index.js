@@ -1,12 +1,12 @@
 const express = require("express");
-const UserModel = require("./model/User")
 const app = express();
-// const product = require("./api/product");
+const product = require("./api/product");
+const UserModel = require("./model/User")
 
 app.use(express.json({ extended: false }));
 
 
-
+app.use("/api/product", product);
 app.get("/",(req, res)=>{
 
     res.send("Backend Working")
