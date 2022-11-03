@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
-const product = require("./api/product");
+// const product = require("./api/product");
 const UserModel = require("./model/User")
 
 app.use(express.json({ extended: false }));
 
 
-app.use("/api/product", product);
+// app.use("/api/product", product);
 app.get("/",(req, res)=>{
 
     res.send("Backend Working")
@@ -47,4 +47,7 @@ app.post("/signin", async(req,res)=>{
 
 
 const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
+
+mongoose.connect(process.env.MONGO_URL).then(()=>{
+    app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
+})
