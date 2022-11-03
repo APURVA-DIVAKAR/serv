@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const connection = mongoose.connect(process.env.MONGO_URL);
+const connection = mongoose.connect(`mongodb+srv://apurva:apurva@cluster0.sr4yhmm.mongodb.net/eleven?retryWrites=true&w=majority`);
 require("dotenv").config()
 const app = express();
 app.use(cors());
@@ -52,14 +52,14 @@ app.post("/login", async(req,res)=>{
 
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 4040;
 
 app.listen(PORT, async () => {
     try {
        await connection;
        console.log("connection to db");
-     } catch {
-       console.log("failled");
+     } catch(e) {
+       console.log("failled",e);
      }
      console.log("server starting");
    });
