@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const mongoose = require("mongoose");
+const connection = mongoose.connect(process.env.MONGO_URL);
 
 const app = express();
 app.use(cors());
@@ -51,6 +53,12 @@ app.post("/login", async(req,res)=>{
 
 const PORT = process.env.PORT || 8080;
 
-mongoose.connect("mongodb://127.0.0.1:27017/Users").then(()=>{
-    app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
-})
+app.listen(PORT, async () => {
+    try {
+       await connection;
+       console.log("connection to db");
+     } catch {
+       console.log("failled");
+     }
+     console.log("server starting");
+   });
